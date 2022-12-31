@@ -1,4 +1,4 @@
-![cover](https://github.com/heathlikethecandybar/dsc-phase-2-project-v2-3/blob/main/images/cover.jpeg)
+![cover](https://github.com/heathlikethecandybar/phase_3_project/blob/main/phase_3/project/images/6-Ways-CRM-Stop-Customer-Churn.png)
 
 # Skyvia Telcom Customer Churn Classification
 
