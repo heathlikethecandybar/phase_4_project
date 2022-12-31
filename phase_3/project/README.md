@@ -113,4 +113,4 @@ For additional info, contact Heath Rittler at [hrittler@gmail.com](mailto:hrittl
 ```
 
 
-cover photo credit:  King Country, Washington - Government Facebook Page https://www.facebook.com/photo/?fbid=478811227612794&set=a.298803398946912
+cover photo credit:  OpenAI labs - Dall-E created on 12/31/2022
