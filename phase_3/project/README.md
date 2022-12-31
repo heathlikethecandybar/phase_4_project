@@ -1,4 +1,4 @@
-![cover](https://github.com/heathlikethecandybar/phase_3_project/blob/main/phase_3/project/images/DALL%C2%B7E%202022-12-31%2009.32.25%20-%20pattern%20identification%20using%20ai.png)
+![cover](https://github.com/heathlikethecandybar/phase_3_project/blob/main/phase_3/project/images/cover.jpeg)
 
 # Skyvia Telcom Customer Churn Classification
 
