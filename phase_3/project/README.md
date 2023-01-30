@@ -60,28 +60,28 @@ That model was then iterated on, leveraging multiple models such as Decision Tre
 
 For our final model, we were able to predict positive churn cases 78% of the time.
 
-![final_confusion](https://github.com/heathlikethecandybar/phase_3_project/tree/main/phase_3/project/images/feature_confusion.png)
+![final_confusion](https://github.com/heathlikethecandybar/phase_3_project/blob/main/phase_3/project/images/feature_confusion.png)
 
 The top 3 features that lead to churn are customers that have the international plan, folks that engage with customer service frequently, and those with the voice mail plan.  Those that are engaging with customer service already, most likely have some other questions or concern about the value that the features/ service are providing.  These would be good indicators of risk, and information to understand what issues customers are experiencing.  
 
 Having customer service calls on this list, actually will make it easier to identify risk within the customer base.  Thus making the outbound efforts to engage with customers with the international plan and the voice mail plan that aren't engaging frequently with customer service.
 
-![feature_importance](https://github.com/heathlikethecandybar/phase_3_project/tree/main/phase_3/project/images/feature_importance.png)
+![feature_importance](https://github.com/heathlikethecandybar/phase_3_project/blob/main/phase_3/project/images/feature_importance.png)
 
 
 ## Results
 
 Customers that had the internation plan feature on their plan churned at a higher rate than those without the international plan feature.  Customers that have the international plan feature churn at a rate near 40% vs those without the feature at 11%.  Understanding why this feature is causing so much dissatisfaction will be an important task for the company to understand. 
 
-![international_plan_churn](https://github.com/heathlikethecandybar/phase_3_project/tree/main/phase_3/project/images/international_plan_churn.png)
+![international_plan_churn](https://github.com/heathlikethecandybar/phase_3_project/blob/main/phase_3/project/images/international_plan_churn.png)
 
 The second most important feature in our data set was customers that were contacting customer service multiple times.  This could be service related, or it could be related to general questions, however once a customer reaches 4 customer service calls, the churn rate goes up significantly.  Churn rate jumps close to 45% once a customer reaches 4 customer service calls.
 
-![churn_cs_calls](https://github.com/heathlikethecandybar/phase_3_project/tree/main/phase_3/project/images/churn_cs_calls.png)
+![churn_cs_calls](https://github.com/heathlikethecandybar/phase_3_project/blob/main/phase_3/project/images/churn_cs_calls.png)
 
 As the product is used, charges are increasing.  What we really want to investigate though is if the price per minute is going down, as the the total minutes go up.  If there was a strategic pricing, I think we would want to see the price per minute go down, but the charges stay flat because of the increase in minutes used.  I think we would actually want to see a negative slope here indicating that the customers that use the product the most, would be getting a slight discount on pricing as usage increases.  Looking at different pricing mechanisms and strategies may also help with customer sentiment and experience, impacting overall churn.
 
-![price_per_minute](https://github.com/heathlikethecandybar/phase_3_project/tree/main/phase_3/project/images/price_per_minute.png)
+![price_per_minute](https://github.com/heathlikethecandybar/phase_3_project/blob/main/phase_3/project/images/price_per_minute.png)
 
 
 ## Conclusions & Recommendations
@@ -100,7 +100,7 @@ In conclusion, we were able to create a model that will accurate predict custome
 Further analyses in these areas could yield additional insights:
 
 - **Look at additional features such as location, or splitting out usage between low, moderate, and high usage**
-- **Include other sources of information such as Salesforce to look at additional account attributes to help with prediction, and strategies to **
+- **Include other sources of information such as Salesforce to look at additional account attributes to help with prediction, and strategies to mitigate risk.**
 - **Refresh the analysis regularly with new data to understand how the market is evolving over time.**
 
 
