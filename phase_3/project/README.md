@@ -60,7 +60,7 @@ That model was then iterated on, leveraging multiple models such as Decision Tre
 
 For our final model, we were able to predict positive churn cases 78% of the time.
 
-![final_confusion](https://github.com/heathlikethecandybar/phase_3_project/blob/main/phase_3/project/images/feature_confusion.png)
+![final_confusion](https://github.com/heathlikethecandybar/phase_3_project/blob/main/phase_3/project/images/final_confusion.png)
 
 The top 3 features that lead to churn are customers that have the international plan, folks that engage with customer service frequently, and those with the voice mail plan.  Those that are engaging with customer service already, most likely have some other questions or concern about the value that the features/ service are providing.  These would be good indicators of risk, and information to understand what issues customers are experiencing.  
 
