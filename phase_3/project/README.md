@@ -1,6 +1,6 @@
 ![cover](https://github.com/heathlikethecandybar/phase_3_project/blob/main/phase_3/project/images/cover.jpeg)
 
-# Skyvia Telcom Customer Churn Classification
+# SyriaTel Customer Churn Classification
 
 **Author**: [Heath Rittler](mailto:hrittler@gmail.com)
 
@@ -9,94 +9,106 @@
 
 https://www.kaggle.com/datasets/becksddf/churn-in-telecoms-dataset
 
-Build a classifier to predict whether a customer will ("soon") stop doing business with SyriaTel, a telecommunications company. This is a binary classification problem.
+SyriaTel, a telecommunications company wants to identify the leading factors of why a customer cancels their service.  This is also referred to as 'Churn.'  If they understand the factors that lead to churn, the company can implement programs to reduce the risk of churn, and increase the lifetime value of and for their customers.
 
-Most naturally, your audience here would be the telecom business itself, interested in reducing how much money is lost because of customers who don't stick around very long. The question you can ask is: are there any predictable patterns here?
+My goal is to build a classifer to predict whether a customer will stop doing business with SyriaTel.  I will be using information such as usage, interactions with SyriaTel, and certain features that the customer has purchased.  I am mostly focused on reducing the rate of false negatives so the metric in which I will be evaluating my models is called Recall.  With that being said, we will also keep a close eye on the F1 score, which looks at the harmonic mean between Recall and Precision.  We will keep a close eye here because even though we aren't as concerned about false positives, we want to limit false positives as much as we can, without sacrificing our Recall.
 
 
 ## Business Problem
 
 Acquring a new customer on average costs 3x that of retaining an existing customer.  At Skyvia, they are trying to optimize their retetention strategies, and do to so they are trying to understand what features of different customers indicate churn.  The presentation will be made availble for the VP of Customer Success, and the Chief Revenue Officer.
 
-
+Within this dataset, 85% of the customers were retained, leading to approximately 15% churn.  This is pretty high compared to other industry standards for tech based companies, typically expericing churn within the 3-8% range.
 
 
 ## Data
 
-This project uses the King County House Sales dataset, which can be found in  `kc_house_data.csv` in the data folder in this repository. The description of the column names can be found in `data_dictionary.md` in the same folder.  The dataset includes 21,597 entries, and 21 columns.  Here are the columns in the dataset:
+This project uses the SyriaTel Kaggle dataset, which can be found in `data.csv` in the data folder in this repository. The dataset includes 3,333 entries, and 21 columns.  Here are the columns in the dataset including our target variable, churn:
 
-* `id` - Unique identifier for a house
-* `date` - Date house was sold
-* `price` - Sale price (prediction target)
-* `bedrooms` - Number of bedrooms
-* `bathrooms` - Number of bathrooms
-* `sqft_living` - Square footage of living space in the home
-* `sqft_lot` - Square footage of the lot
-* `floors` - Number of floors (levels) in house
-* `waterfront` - Whether the house is on a waterfront
-* `view` - Quality of view from house
-* `condition` - How good the overall condition of the house is. Related to maintenance of house.
-* `grade` - Overall grade of the house. Related to the construction and design of the house.
-* `sqft_above` - Square footage of house apart from basement
-* `sqft_basement` - Square footage of the basement
-* `yr_built` - Year when house was built
-* `yr_renovated` - Year when house was renovated
-* `zipcode` - ZIP Code used by the United States Postal Service
-* `lat` - Latitude coordinate
-* `long` - Longitude coordinate
-* `sqft_living15` - The square footage of interior housing living space for the nearest 15 neighbors
-* `sqft_lot15` - The square footage of the land lots of the nearest 15 neighbors
+* `state`- The state in which the account owner resides.
+* `account length` - 
+* `area code` - Primary 3 digit area of the line for the account.
+* `phone number` - Primary 7 digit area of the line for the account.
+* `international plan` - Indicator denoting whether or not the account has an international feature.
+* `voice mail plan` - Indicator denoting whether or not the account has an voice mail feature.
+* `number vmail messages` - Usage metric counting the total number of voicemails for the phone number in question.
+* `total day minutes` - Usage metric indicating how many minutes (call time) were used between 6:00am and 5:00pm.
+* `total day calls` - Usage metric indicating how many calls were used between 6:00am and 5:00pm. 
+* `total day charge` - Usage metric indicating how much the user was charged for their usage between 6:00am and 5:00pm.
+* `total eve minutes` - Usage metric indicating how many minutes (call time) were used between 5:01pm and 8:00pm.
+* `total eve calls` - Usage metric indicating how many calls were used between 5:01pm and 8:00pm. 
+* `total eve charge` - Usage metric indicating how much the user was charged for their usage between 5:01pm and 8:00pm.
+* `total night minutes` - Usage metric indicating how many minutes (call time) were used between 8:01pm and 5:59am.
+* `total night calls` - Usage metric indicating how many calls were used between 8:01pm and 5:59am.
+* `total night charge` - Usage metric indicating how much the user was charged for their usage between 8:01pm and 5:59a.
+* `total intl minutes` - Usage metric indicating how many minutes (call time) were used internationally.
+* `total intl calls` - Usage metric indicating how many calls were made internationally.
+* `total intl charge` - Usage metric indicating how much the user was charged for their international call usage.
+* `customer service calls` - The total number of customer service calls made by the user to the Skyvia Customer Service line.
+* `churn` - Our target category indicating whether or not the customer churned/ cancelled their plan.
 
-Additional information about this dataset can be found on the [King County Assessor Website](https://info.kingcounty.gov/assessor/esales/Glossary.aspx?type=r) Accessor Website. 
+Additional information about the dataset can be found here: https://www.kaggle.com/datasets/becksddf/churn-in-telecoms-dataset
+
+Additional information about this dataset can be found on the [Kaggle Dataset](https://www.kaggle.com/datasets/becksddf/churn-in-telecoms-dataset) website. 
 
 
 ## Methods
 
+After our exploratory analysis, we looked at different classfication models to see if we could accurately predict churn within our data.  We trained our model on 80% of the dataset, while saving the remaining 20% to test our assumptions in what our algorithms learned.  We leveraged a Logistic Regression model, and tuned the regression's hyperparameters to arrive at our baseline model.  
 
+That model was then iterated on, leveraging multiple models such as Decision Tree, Random Forest, Ridge, and XGBoost to evaluate the best model.  Each approach was modeled with and without tuned hyperparameters.  We chose our XGBoost model, which performed the best from a Recall perspective, and from an F1 perspective.  We did consider the second meric for evaluation so we didn't include too many false positives in our predictions.
+
+For our final model, we were able to predict positive churn cases 78% of the time.
+
+![final_confusion](https://github.com/heathlikethecandybar/dsc-phase-3-project/project/blob/main/images/feature_confusion.png)
+
+The top 3 features that lead to churn are customers that have the international plan, folks that engage with customer service frequently, and those with the voice mail plan.  Those that are engaging with customer service already, most likely have some other questions or concern about the value that the features/ service are providing.  These would be good indicators of risk, and information to understand what issues customers are experiencing.  
+
+Having customer service calls on this list, actually will make it easier to identify risk within the customer base.  Thus making the outbound efforts to engage with customers with the international plan and the voice mail plan that aren't engaging frequently with customer service.
+
+![feature_importance](https://github.com/heathlikethecandybar/dsc-phase-3-project/project/blob/main/images/feature_importance.png)
 
 
 ## Results
 
-The first view we took was looking at our average and median price for homes over time.  The dataset has a pretty broad range of homes, starting in 1990 all the way until 2015.  Being that we are focusing on a higher r2 value, to normalize the data, we began our analysis by pulling only the records from 1990 and after.  This gives us a much more normal distribution of price data, giving us better result when we look at our model's performance. 
+Customers that had the internation plan feature on their plan churned at a higher rate than those without the international plan feature.  Customers that have the international plan feature churn at a rate near 40% vs those without the feature at 11%.  Understanding why this feature is causing so much dissatisfaction will be an important task for the company to understand. 
 
-The median home value for King County during this time period is $475k.  So homeowners will quickly be able to assess where the perceived value of their home stands in comparison. This to say that houses with this median home value, also have 2,240 square foot of living area, 2.5 bathrooms, and an median grade number of 7.  Which are features we will continue to evaluate in our model as impactable features.  This information will also be helpful for clients to compare where their current home is based on the build year to what we have in this visual.  With that being said, clients with a home that is older than 1990, can use the statistical values as a comparison for now.  I have also broken out older home values for more specifics, however less accurate, if the client so chooses to use an additional comparison.
+![international_plan_churn](https://github.com/heathlikethecandybar/dsc-phase-2-project-v2-3/blob/main/images/international_plan_churn.png)
 
-![median_home_value_over_time](https://github.com/heathlikethecandybar/dsc-phase-2-project-v2-3/blob/main/images/median_home_value_over_time.png)
+The second most important feature in our data set was customers that were contacting customer service multiple times.  This could be service related, or it could be related to general questions, however once a customer reaches 4 customer service calls, the churn rate goes up significantly.  Churn rate jumps close to 45% once a customer reaches 4 customer service calls.
 
-Now that we understand the typical home in King County, let's take a look at a few different ideas that we can suggest to our clients.  These are enhancements that the client could make at their discretion.  The first feature is square footage of living space.  The median value of square footage in King County is 2,240.  A homeowner would be able to increase their home by $101 per square foot that they add to the footprint of their home.  Remember that living space or area is defined as a part of the home that is heated or cooled, similar to a dining room, or a kitchen for example.  So a customer could increase the value of their home by $10,100 if they were to add a 10x10 room to the overall foot print.  Depending on the grade of the home, and of the room added, could also depend on the impact/ value added when constructing the addition.  These data points should also be considered when evaluating the ultimate build and return on investment when thinking about these types of projects.  In the chart below, you can see the positive association between the price of a home, and the square footage of living space that the home represents.
+![churn_cs_calls](https://github.com/heathlikethecandybar/dsc-phase-3-project/project/blob/main/images/churn_cs_calls.png)
 
-![sq_ft_price_scatter](https://github.com/heathlikethecandybar/dsc-phase-2-project-v2-3/blob/main/images/sq_ft_price_scatter.png)
+As the product is used, charges are increasing.  What we really want to investigate though is if the price per minute is going down, as the the total minutes go up.  If there was a strategic pricing, I think we would want to see the price per minute go down, but the charges stay flat because of the increase in minutes used.  I think we would actually want to see a negative slope here indicating that the customers that use the product the most, would be getting a slight discount on pricing as usage increases.  Looking at different pricing mechanisms and strategies may also help with customer sentiment and experience, impacting overall churn.
 
-In addition to square footage of living space, the next value add to a home owner is 1/4 bathrooms.  1/4 bathrooms can be defined as any component of the bathroom if you think of them individually.  So a toilet, a sink or washbasin, and a shower, and a bathtub would represent a full bathroom.  Adding any one of these components to your bathroom would add an additional $21k of value to your home.  Now considering that smaller bathrooms may not have enough size to evolve into a full bathroom, but most bathrooms could handle adding a sink or washbasin, or a toilet depending on how the bathroom is set up.  We don't necessarily know the combination of the bathrooms in this dataset, so we wouldn't be able to recommend which line up yields the most value.  The clients could however, reference the chart below to understand where their bathroom is, and the potential increment if they were to increase the features within their bathroom.
+![price_per_minute](https://github.com/heathlikethecandybar/dsc-phase-3-project/project/blob/main/images/price_per_minute.png)
 
-![baths_round_hbar](https://github.com/heathlikethecandybar/dsc-phase-2-project-v2-3/blob/main/images/baths_hbar.png)
+Summary
 
-Another features that was evaluated but didn't spend a lot of time on is the grade of the home.  The grade is a scale from 0-13 that represents the overall quality of the home, and an evaluation of the materials used when the home was built.  Each grade that a homeowner can increase the qualitfy of their home, they can add an addition $99k value.  We choose not to fully include this as a part of the recommendation set, but can be used as an alternative recommendation if the first 2 recommendations do not work out for the customer.  Since the home is already built, this feature would apply to the finishes, and final touches of the home, which would manifest in home improvements in all aspects of the home.
+## Conclusions & Recommendations
 
+In conclusion, we were able to create a model that will accurate predict customers that are at risk of churn.  By leveraging that model, and some of the strategies listed below, SyriaTel will be able to mitigate their churn, and increase the Lifetime Value of their customers.  In summary those strategies are:
 
-## Conclusions
+- **Customers that have the international plan and the voice mail plan should be surveyed to understand product performance and value.  Although the voice mail plan performances better when paired with the international plan, it should be noted still that no international plan, and no voice mail plan performs the worst of the possible feature combinations (with those products).** 
 
-In conclusion, we were able to evaluate and identify a few different options for our customer and ultimately some recommendations that they can make to the clients about increasing the value of their home.  In summary those features are:
+- **Once a customer reaches 3 customer service calls, flag the account as at risk.  Once the account reaches 4 calls, the probability of canceling goes from 10% to 45%.**
 
-- **The median home price in King County, WA is $475k**
-- **By increasing the living square footage of your home, you can increase the value by $101 per square foot.** 
-- **By adding bathrooms, and adding 1/4 bath features, you can increase the value of your home by $21k for each 1/4 bath you add.** 
+- **Scale pricing to offer some relief for customers that use the plan more often.  The pricing scale doesn't incentivize more usage of the product.  Another option would be to look at unlimited usage based pricing, to give customers that use the plan more, the relief knowing that if they use the plan more, they won't necessarily be charged more for that usage.** 
 
 
 
 ## Moving Forward
 
-Further analyses in these areas could yield additional insights
+Further analyses in these areas could yield additional insights:
 
-- **Address limitations/ concerns - add additional pricing data, adjust for inflation, etc.**
-- **Look at additional zip codes to understand values more specifically (or not).**
-- **Evaluate additional variables/ features such as environmental, or other factors that may have an impact on a home’s value.**
+- **Look at additional features such as location, or splitting out usage between low, moderate, and high usage**
+- **Include other sources of information such as Salesforce to look at additional account attributes to help with prediction, and strategies to **
 - **Refresh the analysis regularly with new data to understand how the market is evolving over time.**
 
 
 ## For More Information
 
-The full analysis is located in the [Jupyter Notebook](./phase_2_project.ipynb) or review this summary [presentation](./phase_2_presentation.pdf).
+The full analysis is located in the [Jupyter Notebook](./phase_3_notebook.ipynb) or review this summary [presentation](./phase_3_presentation.pdf).
 
 For additional info, contact Heath Rittler at [hrittler@gmail.com](mailto:hrittler@gmail.com)
 
@@ -107,9 +119,9 @@ For additional info, contact Heath Rittler at [hrittler@gmail.com](mailto:hrittl
 ├── data
 ├── images
 ├── README.md
-├── phase_2_presentation.pdf
-├── phase_2_notebook.pdf
-└── phase_2_project.ipynb
+├── phase_3_presentation.pdf
+├── phase_3_notebook.pdf
+└── phase_3_notebook.ipynb
 ```
 
 
