@@ -60,30 +60,29 @@ That model was then iterated on, leveraging multiple models such as Decision Tre
 
 For our final model, we were able to predict positive churn cases 78% of the time.
 
-![final_confusion](https://github.com/heathlikethecandybar/dsc-phase-3-project/project/blob/main/images/feature_confusion.png)
+![final_confusion](https://github.com/heathlikethecandybar/phase_3_project/tree/main/phase_3/project/images/feature_confusion.png)
 
 The top 3 features that lead to churn are customers that have the international plan, folks that engage with customer service frequently, and those with the voice mail plan.  Those that are engaging with customer service already, most likely have some other questions or concern about the value that the features/ service are providing.  These would be good indicators of risk, and information to understand what issues customers are experiencing.  
 
 Having customer service calls on this list, actually will make it easier to identify risk within the customer base.  Thus making the outbound efforts to engage with customers with the international plan and the voice mail plan that aren't engaging frequently with customer service.
 
-![feature_importance](https://github.com/heathlikethecandybar/dsc-phase-3-project/project/blob/main/images/feature_importance.png)
+![feature_importance](https://github.com/heathlikethecandybar/phase_3_project/tree/main/phase_3/project/images/feature_importance.png)
 
 
 ## Results
 
 Customers that had the internation plan feature on their plan churned at a higher rate than those without the international plan feature.  Customers that have the international plan feature churn at a rate near 40% vs those without the feature at 11%.  Understanding why this feature is causing so much dissatisfaction will be an important task for the company to understand. 
 
-![international_plan_churn](https://github.com/heathlikethecandybar/dsc-phase-2-project-v2-3/blob/main/images/international_plan_churn.png)
+![international_plan_churn](https://github.com/heathlikethecandybar/phase_3_project/tree/main/phase_3/project/images/international_plan_churn.png)
 
 The second most important feature in our data set was customers that were contacting customer service multiple times.  This could be service related, or it could be related to general questions, however once a customer reaches 4 customer service calls, the churn rate goes up significantly.  Churn rate jumps close to 45% once a customer reaches 4 customer service calls.
 
-![churn_cs_calls](https://github.com/heathlikethecandybar/dsc-phase-3-project/project/blob/main/images/churn_cs_calls.png)
+![churn_cs_calls](https://github.com/heathlikethecandybar/phase_3_project/tree/main/phase_3/project/images/churn_cs_calls.png)
 
 As the product is used, charges are increasing.  What we really want to investigate though is if the price per minute is going down, as the the total minutes go up.  If there was a strategic pricing, I think we would want to see the price per minute go down, but the charges stay flat because of the increase in minutes used.  I think we would actually want to see a negative slope here indicating that the customers that use the product the most, would be getting a slight discount on pricing as usage increases.  Looking at different pricing mechanisms and strategies may also help with customer sentiment and experience, impacting overall churn.
 
-![price_per_minute](https://github.com/heathlikethecandybar/dsc-phase-3-project/project/blob/main/images/price_per_minute.png)
+![price_per_minute](https://github.com/heathlikethecandybar/phase_3_project/tree/main/phase_3/project/images/price_per_minute.png)
 
-Summary
 
 ## Conclusions & Recommendations
 
@@ -94,7 +93,6 @@ In conclusion, we were able to create a model that will accurate predict custome
 - **Once a customer reaches 3 customer service calls, flag the account as at risk.  Once the account reaches 4 calls, the probability of canceling goes from 10% to 45%.**
 
 - **Scale pricing to offer some relief for customers that use the plan more often.  The pricing scale doesn't incentivize more usage of the product.  Another option would be to look at unlimited usage based pricing, to give customers that use the plan more, the relief knowing that if they use the plan more, they won't necessarily be charged more for that usage.** 
-
 
 
 ## Moving Forward
