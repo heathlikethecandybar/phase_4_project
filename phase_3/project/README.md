@@ -58,7 +58,7 @@ After our exploratory analysis, we looked at different classfication models to s
 
 That model was then iterated on, leveraging multiple models such as Decision Tree, Random Forest, Ridge, and XGBoost to evaluate the best model.  Each approach was modeled with and without tuned hyperparameters.  We chose our XGBoost model, which performed the best from a Recall perspective, and from an F1 perspective.  We did consider the second meric for evaluation so we didn't include too many false positives in our predictions.
 
-For our final model, we were able to predict positive churn cases 78% of the time.
+For our final model, we were able to predict positive churn cases 82% of the time.
 
 ![final_confusion](https://github.com/heathlikethecandybar/phase_3_project/blob/main/phase_3/project/images/final_confusion.png)
 
